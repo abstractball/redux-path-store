@@ -76,7 +76,7 @@ const Farms: React.FC = () => {
   }, [])
 
   return (<>
-    {farms.pathMap((farm) => <div>{farm.name}</div>)}
+    {farms.map((farm) => <div>{farm.name}</div>)}
   </>)
 }
 ```
