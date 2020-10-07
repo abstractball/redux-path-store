@@ -3,22 +3,20 @@ Simplified redux store management leveraging the power of pathing objects.
 
 # Introduction
 A path store is simply an automatically generated redux store which includes the reducers
-and actions based upon the initialState it was provided.
+and actions based upon the initial state it was provided.
 
 ### Intuitive usage
 Manage the redux state without having to dig into the management of
-updating reducers or actions. Manage the redux state like you would manage a local state.
+updating reducers or actions. Manage the redux state like you would manage the local state.
 
 ### Modern
-This package uses TypeScript out of the box and will only support the usage of React Hooks.
+Uses TypeScript out of the box and will only support the usage of React Hooks.
 
 ### Light and minimalistic
-This package is very simple, only using files which mostly piggy backs off of "@redux/toolkit"
-and "object-path-immutable".
+Simple as its only using files which mostly piggy backs off of "@redux/toolkit" and "object-path-immutable".
 
 ### Redux DevTool friendly
-This package works with Redux DevTool, your automatically generated actions will
-showup in extension.
+Works with Redux DevTool, your automatically generated actions will show up in the extension.
 
 # Example
 
