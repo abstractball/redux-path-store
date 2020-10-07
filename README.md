@@ -11,7 +11,7 @@ updating reducers or actions. Manage the redux state like you would manage the l
 
 ### Modern and Typed
 Uses TypeScript out of the box and will only support the usage of React Hooks.
-The redux path map has its types automatically generated for you to prevent miss spellings and
+The redux store paths are automatically typed for you to prevent miss spellings and
 add autofill for your IDE.
 
 ### Light and minimalistic
