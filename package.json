@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "prepublish": "tsc"
+    "prepare": "tsc"
   },
   "author": "abstractball",
   "license": "ISC",

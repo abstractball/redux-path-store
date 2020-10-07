@@ -1,22 +1,22 @@
-import { createPathStore } from '../src/utils/Helpers'
+import { createStoreFromState } from '../src'
 
-test('path pathMap correctly returns path', () => {
+test('pathMap correctly returns path', () => {
   const farm = { fruits: { apples: true } }
-  const store = createPathStore(farm)
-  const Paths = store.map
+  const store = createStoreFromState(farm)
+  const Paths = store.pathMap
 
   expect(Paths.fruits.apples.path).toBe('fruits.apples')
   expect(Paths.fruits.apples).toMatchObject({ path: 'fruits.apples', defaultValue: true })
 })
 
-test('simple path pathMap returns correctly', () => {
+test('Another pathMap returns correctly', () => {
   const defaultProps = {
     cat: {
       name: 'Athena',
     },
   }
 
-  expect(createPathStore(defaultProps).map).toMatchObject({
+  expect(createStoreFromState(defaultProps).pathMap).toMatchObject({
     path: '',
     cat: {
       path: 'cat',
@@ -59,5 +59,5 @@ test('complex path pathMap returns correctly', () => {
     },
   }
 
-  expect(createPathStore(user).map).toMatchObject(userPathMap)
+  expect(createStoreFromState(user).pathMap).toMatchObject(userPathMap)
 })
