@@ -13,10 +13,11 @@ updating reducers or actions. Manage the redux state like you would manage the l
 Uses TypeScript out of the box and will only support the usage of React Hooks.
 
 ### Light and minimalistic
-Simple as its only using files which mostly piggy backs off of "@redux/toolkit" and "object-path-immutable".
+Its only built with a few files as it mostly piggy backs off of "@redux/toolkit" and "object-path-immutable".
 
-### Redux DevTool friendly
-Works with Redux DevTool, your automatically generated actions will show up in the extension.
+### Redux DevTools
+Works with Redux DevTools, the automatically generated actions will show up in the extension as
+normal.
 
 # Example
 
