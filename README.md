@@ -13,8 +13,8 @@ updating reducers or actions. Manage the redux state like you would manage a loc
 This package uses TypeScript out of the box and will only support the usage of React Hooks.
 
 ### Light and minimalistic
-This package is only a few simple files which mostly piggy back off of @redux/toolkit
-and an immutable object path setter.
+This package is very simple, only using files which mostly piggy backs off of "@redux/toolkit"
+and "object-path-immutable".
 
 ### Redux DevTool friendly
 This package works with Redux DevTool, your automatically generated actions will
