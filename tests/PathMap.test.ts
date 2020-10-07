@@ -1,4 +1,4 @@
-import { createPathStore } from '../Helpers'
+import { createPathStore } from '../src/Helpers'
 
 test('path map correctly returns path', () => {
   const farm = { fruits: { apples: true } }
@@ -6,7 +6,7 @@ test('path map correctly returns path', () => {
   const Paths = store.map
 
   expect(Paths.fruits.apples.path).toBe('fruits.apples')
-  expect(Paths.fruits.apples).toStrictEqual({ path: 'fruits.apples', defaultValue: true })
+  expect(Paths.fruits.apples).toMatchObject({ path: 'fruits.apples', defaultValue: true })
 })
 
 test('simple path map returns correctly', () => {
@@ -16,7 +16,7 @@ test('simple path map returns correctly', () => {
     },
   }
 
-  expect(createPathStore(defaultProps).map).toStrictEqual({
+  expect(createPathStore(defaultProps).map).toMatchObject({
     path: '',
     cat: {
       path: 'cat',
@@ -54,26 +54,10 @@ test('complex path map returns correctly', () => {
     name: { path: 'name', defaultValue: '' },
     email: { path: 'email', defaultValue: '' },
     friends: {
-      0: {
-        path: 'friends.0',
-        name: {
-          path: 'friends.0.name',
-          defaultValue: 'Sally',
-        },
-        defaultValue: { name: 'Sally' },
-      },
-      1: {
-        path: 'friends.1',
-        name: {
-          path: 'friends.1.name',
-          defaultValue: 'Joe',
-        },
-        defaultValue: { name: 'Joe' },
-      },
       path: 'friends',
       defaultValue: [{ name: 'Sally' }, { name: 'Joe' }],
     },
   }
 
-  expect(createPathStore(user).map).toStrictEqual(userPathMap)
+  expect(createPathStore(user).map).toMatchObject(userPathMap)
 })

@@ -2,20 +2,20 @@ import { configureStore, ConfigureStoreOptions, createReducer, EnhancedStore } f
 import { Reducer } from 'react'
 import createReduxActions from './createReduxActions'
 import Property from './Property'
-import { PathStoreMap } from './Helpers'
+import { PathStoreMap } from './index'
 
 class PathStore<T> {
   map: PathStoreMap<T>
 
   initialState: T
 
-  onStateChange: OnStateChange
+  onStateChange: OnStateChange<T>
 
   store: EnhancedStore<T>
 
   property: Property<T>
 
-  constructor(initialState: T, options: Partial<ConfigureStoreOptions>, onStateChange: OnStateChange = undefined) {
+  constructor(initialState: T, options: Partial<ConfigureStoreOptions>, onStateChange: OnStateChange<T> = undefined) {
     this.initialState = initialState
     this.onStateChange = onStateChange
 

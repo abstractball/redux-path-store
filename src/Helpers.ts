@@ -1,20 +1,10 @@
 import * as immutable from 'object-path-immutable'
-import { ConfigureStoreOptions, EnhancedStore } from '@reduxjs/toolkit'
+import { ConfigureStoreOptions } from '@reduxjs/toolkit'
 import React from 'react'
 import PathStore from './PathStore'
+import { PathStoreMap } from './index'
 
-type MorphsAs<T> = {
-  [key in keyof T]: PathStoreMap<T[key]>
-};
-
-export type PathStoreMap<T> = MorphsAs<T> & {
-  store: EnhancedStore
-  path: string // The string path to access the objects attribute.
-  defaultValue: T // Allows us to reset a value
-  actionName: string // Redux action name.
-};
-
-export function createPathStore<T>(initialState: T, options: Partial<ConfigureStoreOptions> = {}, onStateChange: OnStateChange = undefined): PathStore<T> {
+export function createPathStore<T>(initialState: T, options: Partial<ConfigureStoreOptions> = {}, onStateChange: OnStateChange<T> = undefined): PathStore<T> {
   return new PathStore<T>(initialState, options, onStateChange)
 }
 

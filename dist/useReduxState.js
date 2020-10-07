@@ -22,11 +22,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_redux_1 = require("react-redux");
 var immutable = __importStar(require("object-path-immutable"));
 var react_1 = require("react");
-var Helpers_1 = require("./Helpers");
+var index_1 = require("./index");
 function useReduxState(pathMap) {
     var value = react_redux_1.useSelector(function (store) { return immutable.get(store, pathMap.path); });
-    var setValue = react_1.useCallback(function (action) { return Helpers_1.setReduxState(pathMap, action); }, [pathMap]);
-    var resetValue = react_1.useCallback(function () { return Helpers_1.setReduxState(pathMap, pathMap.defaultValue); }, [pathMap]);
+    var setValue = react_1.useCallback(function (action) { return index_1.setReduxState(pathMap, action); }, [pathMap]);
+    var resetValue = react_1.useCallback(function () { return index_1.setReduxState(pathMap, pathMap.defaultValue); }, [pathMap]);
     return [value, setValue, resetValue];
 }
 exports.default = useReduxState;

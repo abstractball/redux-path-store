@@ -1,5 +1,5 @@
 import { EnhancedStore } from '@reduxjs/toolkit';
-import { PathStoreMap } from './Helpers';
+import { PathStoreMap } from './index';
 export declare function camelToSnake(str: string): string;
 declare class Property<T> {
     path: string;
