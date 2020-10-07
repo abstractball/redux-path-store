@@ -2,15 +2,18 @@
 Simplified redux store management leveraging the power of pathing objects.
 
 # Introduction
-A path store is simply a redux store that automatically generates your reducers
+A path store is simply an automatically generated redux store which includes the reducers
 and actions based upon the initialState it was provided.
 
 ### Intuitive usage
 Manage the redux state without having to dig into the management of
 updating reducers or actions. Manage the redux state like you would manage a local state.
 
-### Small
-This package is only a few simple files which piggy back off of @redux/toolkit
+### Modern
+This package uses TypeScript out of the box and will only support the usage of React Hooks.
+
+### Light and minimalistic
+This package is only a few simple files which mostly piggy back off of @redux/toolkit
 and an immutable object path setter.
 
 ### Redux DevTool friendly
@@ -36,13 +39,14 @@ const initialState = {
     farmer: {name: 'Bobby Red', details: {age: 50}}
 }
 
-const pathStore = createPathStore<RootState>(initialState)
+const {store, paths} = generateStoreFromState<RootState>(initialState)
 
 // Normal Redux Store, packaged with auto generated actions/reducers based upon initialState.
-export const rootState = pathStore.store
+export const rootStore = store
 
-// Pathed map that are sourced from your initialState
-export const Root = pathStore.map
+// map of the object paths sourced from your initialState to be consumed
+// by your "useReduxState" hook.
+export const Root = paths
 
 console.log(Root.farms) // "farms"
 console.log(Root.farmer) // "farmer"
@@ -52,6 +56,9 @@ console.log(Root.doggy) // undefined
 
 components/Farms.tsx
 ```typescript
+import {Root} from './redux/RootStore'
+import {useReduxState} from 'redux-path-store'
+
 const Farms: React.FC = () => {
   // Local State
   const [animals, setAnimals] = useState([])
