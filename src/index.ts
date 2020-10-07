@@ -9,10 +9,10 @@ type MorphsAs<T> = {
 };
 
 export type PathStoreMap<T> = MorphsAs<T> & {
-  store: EnhancedStore
-  path: string // The string path to access the objects attribute.
+  store: EnhancedStore // Redux store we generated with the map
+  path: string // The objects path used for immutable object path set
   defaultValue: T // Allows us to reset a value
-  actionName: string // Redux action name.
+  actionName: string // Redux action name
 };
 
 
