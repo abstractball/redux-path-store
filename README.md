@@ -42,11 +42,10 @@ const initialState = {
 
 const {store, pathMap} = createStoreFromState<RootState>(initialState)
 
-// Normal Redux Store, packaged with auto generated actions/reducers based upon initialState.
+// Normal redux Store, packaged with auto generated actions/reducers based upon initialState.
 export const rootStore = store
 
-// pathMap of the object pathMap sourced from your initialState to be consumed
-// by your "useReduxState" hook.
+// A property pathing map of your Store to be consumed by your "useReduxState" hook.
 export const Root = pathMap
 
 console.log(Root.farms) // "farms"
