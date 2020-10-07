@@ -38,14 +38,14 @@ const initialState = {
     farmer: {name: 'Bobby Red', details: {age: 50}}
 }
 
-const {store, paths} = generateStoreFromState<RootState>(initialState)
+const {store, pathMap} = createStoreFromState<RootState>(initialState)
 
 // Normal Redux Store, packaged with auto generated actions/reducers based upon initialState.
 export const rootStore = store
 
-// map of the object paths sourced from your initialState to be consumed
+// pathMap of the object pathMap sourced from your initialState to be consumed
 // by your "useReduxState" hook.
-export const Root = paths
+export const Root = pathMap
 
 console.log(Root.farms) // "farms"
 console.log(Root.farmer) // "farmer"
@@ -74,7 +74,7 @@ const Farms: React.FC = () => {
   }, [])
 
   return (<>
-    {farms.map((farm) => <div>{farm.name}</div>)}
+    {farms.pathMap((farm) => <div>{farm.name}</div>)}
   </>)
 }
 ```

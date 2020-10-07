@@ -2,7 +2,7 @@ import useReduxState from './hooks/useReduxState'
 import { EnhancedStore } from '@reduxjs/toolkit'
 import { setReduxState } from './utils/setReduxState';
 import { getReduxState } from './utils/getReduxState';
-import { createPathStore } from './utils/createPathStore';
+import { createStoreFromState } from './utils/createStoreFromState';
 
 type MorphsAs<T> = {
   [key in keyof T]: PathStoreMap<T[key]>
@@ -16,4 +16,4 @@ export type PathStoreMap<T> = MorphsAs<T> & {
 };
 
 
-export {createPathStore, useReduxState, getReduxState, setReduxState}
+export {createStoreFromState, useReduxState, getReduxState, setReduxState}

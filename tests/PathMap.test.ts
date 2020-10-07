@@ -1,6 +1,6 @@
 import { createPathStore } from '../src/utils/Helpers'
 
-test('path map correctly returns path', () => {
+test('path pathMap correctly returns path', () => {
   const farm = { fruits: { apples: true } }
   const store = createPathStore(farm)
   const Paths = store.map
@@ -9,7 +9,7 @@ test('path map correctly returns path', () => {
   expect(Paths.fruits.apples).toMatchObject({ path: 'fruits.apples', defaultValue: true })
 })
 
-test('simple path map returns correctly', () => {
+test('simple path pathMap returns correctly', () => {
   const defaultProps = {
     cat: {
       name: 'Athena',
@@ -34,7 +34,7 @@ test('simple path map returns correctly', () => {
   })
 })
 
-test('complex path map returns correctly', () => {
+test('complex path pathMap returns correctly', () => {
   const user = {
     name: '',
     email: '',
