@@ -52,7 +52,7 @@ export const Root = pathMap
 console.log(Root.farms) // "farms"
 console.log(Root.farmer) // "farmer"
 console.log(Root.farmer.details.age) // "farmer.details.age"
-console.log(Root.doggy) // undefined
+console.log(Root.doggy) // undefined, typescript error will occur.
 ```
 
 components/Farms.tsx
