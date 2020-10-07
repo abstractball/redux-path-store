@@ -1,6 +1,6 @@
 import { createStoreFromState } from '../src'
 
-test('pathMap correctly returns path', () => {
+test('pathMap returns correctly', () => {
   const farm = { fruits: { apples: true } }
   const store = createStoreFromState(farm)
   const Paths = store.pathMap
