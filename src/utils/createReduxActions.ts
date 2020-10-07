@@ -6,10 +6,10 @@
  Output: {'USER': rootReducer, 'USER_FRUITS': rootReducer}}
  */
 import * as immutable from 'object-path-immutable'
-import PathStore from './PathStore'
-import { PathStoreMap } from './index'
+import PathStore from '../classes/PathStore'
+import { PathStoreMap } from '../index'
 
-function createReduxActions<T>(store: PathStore<T>, path: PathStoreMap<any>, actionMap: ActionMap = {}) {
+export function createReduxActions<T>(store: PathStore<T>, path: PathStoreMap<any>, actionMap: ActionMap = {}) {
   // All actions are ran through an immutable obj path set of the rootState.
   const rootReducer = (prevState: T, action: { key: string, value: any }) => {
     const newState = immutable.set(prevState, action.key, action.value)
@@ -39,5 +39,3 @@ function createReduxActions<T>(store: PathStore<T>, path: PathStoreMap<any>, act
 
   return actionMap
 }
-
-export default createReduxActions

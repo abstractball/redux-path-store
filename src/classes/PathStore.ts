@@ -1,8 +1,8 @@
 import { configureStore, ConfigureStoreOptions, createReducer, EnhancedStore } from '@reduxjs/toolkit'
 import { Reducer } from 'react'
-import createReduxActions from './createReduxActions'
 import Property from './Property'
-import { PathStoreMap } from './index'
+import { PathStoreMap } from '../index'
+import { createReduxActions } from '../utils/createReduxActions'
 
 class PathStore<T> {
   map: PathStoreMap<T>

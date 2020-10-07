@@ -1,4 +1,4 @@
-import { createPathStore } from '../src/Helpers'
+import { createPathStore } from '../src/utils/Helpers'
 
 test('path map correctly returns path', () => {
   const farm = { fruits: { apples: true } }
