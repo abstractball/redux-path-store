@@ -1,6 +1,6 @@
 {
   "name": "redux-path-store",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simplified redux store management leveraging the power of pathing objects.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -22,6 +22,19 @@
       "^.+\\.tsx?$": "ts-jest"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abstractball/redux-path-store"
+  },
+  "bugs": {
+    "url": "https://github.com/abstractball/redux-path-store"
+  },
+  "files": [
+    "src",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "@types/react": "^16.9.51",

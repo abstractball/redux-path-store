@@ -23,7 +23,7 @@ normal.
 
 # Example
 
-redux/RootStore.ts
+redux/rootStore.ts
 ```typescript
 interface RootState {
     farms: {name: string}[]
@@ -42,7 +42,7 @@ const initialState = {
 
 const {store, pathMap} = createStoreFromState<RootState>(initialState)
 
-// Normal redux Store, packaged with auto generated actions/reducers based upon initialState.
+// Normal redux store, packaged with auto generated actions/reducers based upon initialState.
 export const rootStore = store
 
 // A property pathing map of your Store to be consumed by your "useReduxState" hook.
@@ -56,7 +56,7 @@ console.log(Root.doggy) // undefined, typescript error will occur.
 
 components/Farms.tsx
 ```typescript
-import {Root} from './redux/RootStore'
+import {Root} from './redux/rootStore'
 import {useReduxState} from 'redux-path-store'
 
 const Farms: React.FC = () => {
