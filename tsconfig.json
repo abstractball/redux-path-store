@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES2015",
-    "module": "ES2020",
-    "outDir": "./dist/esm",
+    "module": "CommonJS",
+    "outDir": "./dist",
     "esModuleInterop": true,
     "strict": true,
-    "moduleResolution": "node",
     "declaration": true,
     "forceConsistentCasingInFileNames": true
   },
