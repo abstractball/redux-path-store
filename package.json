@@ -1,10 +1,9 @@
 {
   "name": "redux-path-store",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Simplified redux store management leveraging the power of pathing objects.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "test": "jest",
