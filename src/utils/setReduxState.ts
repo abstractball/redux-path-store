@@ -1,5 +1,6 @@
-import { getReduxState, PathStoreMap } from '../index'
+import { getReduxState } from '../index'
 import React from 'react'
+import { PathStoreMap } from '../types'
 
 export function setReduxState<T>(pathStoreMap: PathStoreMap<T>, action: React.SetStateAction<T>): React.Dispatch<React.SetStateAction<T>> {
   if (typeof action === 'function') {

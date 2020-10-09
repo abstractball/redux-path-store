@@ -1,6 +1,6 @@
 import { EnhancedStore } from '@reduxjs/toolkit'
-import { PathStoreMap } from '../index'
 import { camelToSnake } from '../utils/camelToSnake'
+import { PathStoreMap, ValueOf } from '../types'
 
 class Property<T> {
   path: string
