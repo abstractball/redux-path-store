@@ -33,7 +33,7 @@ class StoreGenerator<T> {
     // Passing undefined due to the chicken/egg issue. Properties require a store but store actions require properties.
     // Its okay because we are using this only to generate the reducer and actions.
     const initialStateProp = new Property<T>(undefined, '', '', this.initialState)
-    const reducer: Reducer<T, any> = createReducer(this.initialState, createReduxActions<T>(this, initialStateProp.getMap()))
+    const reducer: Reducer<T, any> = createReducer(this.initialState, createReduxActions<T>(this, initialStateProp.getMap()) as any)
 
     return configureStore<T>({ reducer, ...options } as any)
   }

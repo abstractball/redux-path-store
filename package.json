@@ -1,13 +1,14 @@
 {
   "name": "redux-path-store",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Simplified redux store management leveraging the power of pathing objects.",
-  "main": "./dist/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "test": "jest",
-    "prepare": "tsc"
+    "prepare": "npm run build"
   },
   "author": "abstractball",
   "license": "ISC",
@@ -15,7 +16,8 @@
     "@reduxjs/toolkit": "^1.4.0",
     "object-path-immutable": "^4.1.0",
     "react": "^16.13.1",
-    "react-redux": "^7.2.1"
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
   },
   "jest": {
     "transform": {

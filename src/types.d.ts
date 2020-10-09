@@ -1,12 +1,7 @@
-interface ActionMap {
-  [key: string]: StateReducer
+interface ActionMap<T> {
+  [key: string]: StateReducer<T>
 }
 
 type OnStateChange<T> = ((state: T, action: any, newState: T) => any) | undefined
-type StateReducer = (state: State, payload: { key: string, value: any }) => State
+type StateReducer<T> = (state: T, payload: { key: string, value: any }) => T
 type ValueOf<T> = T[keyof T];
-
-type Partial<T> = {
-  [P in keyof T]?: T[P];
-};
-
