@@ -4,6 +4,7 @@
     "module": "commonjs",
     "jsx": "react",
     "outDir": "./dist",
+    "allowJs": true,
     "esModuleInterop": true,
     "strict": true,
     "declaration": true,
