@@ -1,4 +1,4 @@
-import useReduxState from './hooks/useReduxState'
+import { UseReduxState, useReduxState } from './hooks/useReduxState'
 import { setReduxState } from './utils/setReduxState'
 import { getReduxState } from './utils/getReduxState'
 import { resetReduxState } from './utils/resetReduxState'
@@ -6,7 +6,7 @@ import { appendReduxState } from './utils/appendReduxState'
 import { createStoreFromState } from './utils/createStoreFromState'
 import { EnhancedStore } from '@reduxjs/toolkit'
 
-export {createStoreFromState, resetReduxState, appendReduxState, useReduxState, getReduxState, setReduxState}
+export {createStoreFromState, resetReduxState, appendReduxState, useReduxState, getReduxState, setReduxState, UseReduxState}
 
 export interface ActionMap<T> {
   [key: string]: StateReducer<T>
