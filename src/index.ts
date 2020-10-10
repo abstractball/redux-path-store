@@ -15,6 +15,7 @@ export interface ActionMap<T> {
 export type OnStateChange<T> = ((state: T, action: any, newState: T) => any) | undefined
 export type StateReducer<T> = (state: T, payload: { key: string, value: any }) => T
 export type ValueOf<T> = T[keyof T];
+
 export type MorphsAs<T> = {
   [key in keyof T]: PathStoreMap<T[key]>
 };
