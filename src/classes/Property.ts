@@ -53,9 +53,7 @@ class Property<T> {
   }
 
   getProperties(): Property<ValueOf<T>>[] {
-    if (!this.isObject() || Array.isArray(this.value)) {
-      return []
-    }
+    if (!this.isObject() || Array.isArray(this.value)) return []
 
     return Object.keys(this.value).map((key) => {
       // beginning of object? dont append an '.', just use its key.

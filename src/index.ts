@@ -1,12 +1,18 @@
+import { ConfigureStoreOptions, EnhancedStore } from '@reduxjs/toolkit'
 import { UseReduxState, useReduxState } from './hooks/useReduxState'
 import { setReduxState } from './utils/setReduxState'
 import { getReduxState } from './utils/getReduxState'
 import { resetReduxState } from './utils/resetReduxState'
 import { appendReduxState } from './utils/appendReduxState'
 import { createStoreFromState } from './utils/createStoreFromState'
-import { EnhancedStore } from '@reduxjs/toolkit'
 
-export {createStoreFromState, resetReduxState, appendReduxState, useReduxState, getReduxState, setReduxState, UseReduxState}
+export { createStoreFromState, resetReduxState, appendReduxState, useReduxState, getReduxState, setReduxState, UseReduxState }
+
+export interface PathStoreOptions<T> {
+  reduxStoreOptions: Partial<ConfigureStoreOptions>
+  onStateChange?: OnStateChange<T>
+  actionPrefix?: string
+}
 
 export interface ActionMap<T> {
   [key: string]: StateReducer<T>

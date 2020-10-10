@@ -1,5 +1,4 @@
-
-import * as immutable from "object-path-immutable"
+import * as immutable from 'object-path-immutable'
 import { PathStoreMap } from '../index'
 
 export function getReduxState<T>(pathStoreMap: PathStoreMap<T>) {

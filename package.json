@@ -1,6 +1,6 @@
 {
   "name": "redux-path-store",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "Simplified redux store management leveraging the power of pathing objects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
