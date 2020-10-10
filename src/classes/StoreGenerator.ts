@@ -20,7 +20,7 @@ class StoreGenerator<T> {
   // Property for the initialState.
   property: Property<T>
 
-  actionPrefix: string = 'test'
+  actionPrefix: string = ''
 
   constructor(initialState: T, options: PathStoreOptions<T>) {
     this.initialState = initialState
