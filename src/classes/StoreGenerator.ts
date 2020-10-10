@@ -20,7 +20,7 @@ class StoreGenerator<T> {
   // Property for the initialState.
   property: Property<T>
 
-  actionPrefix: string
+  actionPrefix: string = 'test'
 
   constructor(initialState: T, options: PathStoreOptions<T>) {
     this.initialState = initialState
@@ -28,8 +28,8 @@ class StoreGenerator<T> {
     if (options.onStateChange) this.onStateChange = options.onStateChange
     if (options.actionPrefix) this.actionPrefix = options.actionPrefix
 
-    this.store = this.createReduxStore(options.reduxStoreOptions)
-    this.property = new Property<T>(this.store, '', '', this.initialState)
+    this.store = this.createReduxStore(options.reduxStoreOptions ?? {})
+    this.property = new Property<T>(this, '', '', this.initialState)
     this.pathMap = this.property.getMap()
   }
 

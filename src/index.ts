@@ -9,7 +9,7 @@ import { createStoreFromState } from './utils/createStoreFromState'
 export { createStoreFromState, resetReduxState, appendReduxState, useReduxState, getReduxState, setReduxState, UseReduxState }
 
 export interface PathStoreOptions<T> {
-  reduxStoreOptions: Partial<ConfigureStoreOptions>
+  reduxStoreOptions?: Partial<ConfigureStoreOptions>
   onStateChange?: OnStateChange<T>
   actionPrefix?: string
 }

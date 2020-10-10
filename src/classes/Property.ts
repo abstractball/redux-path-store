@@ -1,6 +1,7 @@
 import { EnhancedStore } from '@reduxjs/toolkit'
 import { camelToSnake } from '../utils/camelToSnake'
 import { PathStoreMap, ValueOf } from '../index'
+import StoreGenerator from './StoreGenerator'
 
 class Property<T> {
   path: string
@@ -11,12 +12,15 @@ class Property<T> {
 
   store: EnhancedStore | undefined
 
+  generator: StoreGenerator<any> | undefined
+
   value: T
 
   map: PathStoreMap<T>
 
-  constructor(store: EnhancedStore | undefined, path: string, name: string, value: T) {
-    this.store = store
+  constructor(generator: StoreGenerator<any> | undefined, path: string, name: string, value: T) {
+    this.generator = generator
+    this.store = generator ? generator.store : undefined
     this.path = path
     this.name = name
     this.value = value
@@ -49,7 +53,7 @@ class Property<T> {
 
   // Leverage typescript auto parsing value types.
   createProperty<T>(path: string, name: string, value: T) {
-    return new Property<T>(this.store, path, name, value)
+    return new Property<T>(this.generator as any, path, name, value)
   }
 
   getProperties(): Property<ValueOf<T>>[] {
@@ -66,7 +70,9 @@ class Property<T> {
   }
 
   getReduxActionName(): string {
-    return camelToSnake(this.path.split('.').join('-')).toUpperCase()
+    const prefix = this.generator ? this.generator.actionPrefix : ''
+
+    return prefix + camelToSnake(this.path.split('.').join('-')).toUpperCase()
   }
 }
 
