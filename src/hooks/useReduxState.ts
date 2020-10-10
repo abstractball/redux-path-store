@@ -4,7 +4,9 @@ import React, { useCallback } from 'react'
 import { setReduxState } from '../utils/setReduxState'
 import { PathStoreMap } from '../index'
 
-function useReduxState<T>(pathMap: PathStoreMap<T>): [T, React.Dispatch<React.SetStateAction<T>>, () => React.Dispatch<React.SetStateAction<T>>] {
+type UseReduxState<T> =  [T, React.Dispatch<React.SetStateAction<T>>, () => React.Dispatch<React.SetStateAction<T>>]
+
+function useReduxState<T>(pathMap: PathStoreMap<T>): UseReduxState<T> {
   const value = useSelector((store: any) => immutable.get(store, pathMap.path))
 
   const setValue = useCallback<React.Dispatch<React.SetStateAction<T>>>(
