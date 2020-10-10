@@ -2,7 +2,7 @@ import { configureStore, ConfigureStoreOptions, createReducer, EnhancedStore } f
 import { Reducer } from 'react'
 import Property from './Property'
 import { createReduxActions } from '../utils/createReduxActions'
-import { OnStateChange, PathStoreMap } from '../types'
+import { OnStateChange, PathStoreMap } from '../index'
 
 class StoreGenerator<T> {
   // The automatically generated pathMap from the initialState provided.

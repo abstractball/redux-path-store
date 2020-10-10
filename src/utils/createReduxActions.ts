@@ -1,6 +1,6 @@
 import * as immutable from 'object-path-immutable'
 import StoreGenerator from '../classes/StoreGenerator'
-import { ActionMap, PathStoreMap } from '../types'
+import { ActionMap, PathStoreMap } from '../index'
 /*
  Produces a ActionMap(@redux/toolkit) from a StoreGenerator.
 

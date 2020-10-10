@@ -1,6 +1,6 @@
 
 import immutable from "object-path-immutable"
-import { PathStoreMap } from '../types'
+import { PathStoreMap } from '../index'
 
 export function getReduxState<T>(pathStoreMap: PathStoreMap<T>) {
   return immutable.get(pathStoreMap.store.getState(), pathStoreMap.path)
