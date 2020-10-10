@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import * as immutable from 'object-path-immutable'
 import React, { useCallback } from 'react'
-import {  setReduxState } from '../index'
+import { setReduxState } from '../utils/setReduxState'
 import { PathStoreMap } from '../types'
 
 function useReduxState<T>(pathMap: PathStoreMap<T>): [T, React.Dispatch<React.SetStateAction<T>>, () => React.Dispatch<React.SetStateAction<T>>] {

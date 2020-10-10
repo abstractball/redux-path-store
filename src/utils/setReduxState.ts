@@ -1,4 +1,4 @@
-import { getReduxState } from '../index'
+import { getReduxState } from './getReduxState'
 import React from 'react'
 import { PathStoreMap } from '../types'
 
