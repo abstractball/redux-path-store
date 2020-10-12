@@ -1,6 +1,6 @@
 {
   "name": "redux-path-store",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "description": "Simplified redux store management leveraging the power of pathing objects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,9 +15,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "dashify": "^2.0.0",
     "object-path-immutable": "^4.1.0",
-    "react": "^16.13.1",
-    "react-redux": "^7.2.1",
-    "redux": "^4.0.5"
+    "react-redux": "^7.2.1"
   },
   "jest": {
     "transform": {
@@ -38,11 +36,13 @@
     "README.md"
   ],
   "peerDependencies": {
-    "react": ">=16.0.0"
+    "react": ">=16.0.0",
+    "react-redux": ">=7.2.0",
+    "redux": ">=4.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
     "@types/dashify": "^1.0.0",
+    "@types/jest": "^26.0.14",
     "@types/react": "^16.9.51",
     "@types/react-redux": "^7.1.9",
     "@typescript-eslint/eslint-plugin": "^4.4.0",

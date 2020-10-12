@@ -1,7 +1,7 @@
 import { EnhancedStore } from '@reduxjs/toolkit'
-import dashify from 'dashify'
-import { PathStoreMap, ValueOf } from '../index'
 import StoreGenerator from './StoreGenerator'
+import { camelToSnake } from '../utils/camelToSnake'
+import { PathStoreMap, ValueOf } from '../types'
 
 class Property<T> {
   path: string
@@ -70,9 +70,7 @@ class Property<T> {
   }
 
   getReduxActionName(): string {
-    const prefix = this.generator ? this.generator.actionPrefix : ''
-
-    return prefix + dashify(this.path).toUpperCase()
+    return camelToSnake(this.path).toUpperCase()
   }
 }
 

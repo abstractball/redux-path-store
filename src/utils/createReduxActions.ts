@@ -1,6 +1,6 @@
 import * as immutable from 'object-path-immutable'
 import StoreGenerator from '../classes/StoreGenerator'
-import { ActionMap, PathStoreMap } from '../index'
+import { ActionMap, PathStoreAction, PathStoreMap } from '../types'
 
 /*
  Produces a ActionMap(@redux/toolkit) from a StoreGenerator.
@@ -10,8 +10,8 @@ import { ActionMap, PathStoreMap } from '../index'
  */
 export function createReduxActions<T>(store: StoreGenerator<T>, path: PathStoreMap<any>, actionMap: ActionMap<T> = {}) {
   // All actions are ran through an immutable obj path set of the rootState.
-  const rootReducer = (prevState: T, action: { key: string, value: any }) => {
-    const newState = immutable.set(prevState, action.key, action.value)
+  const rootReducer = (prevState: T, action: PathStoreAction<any>) => {
+    const newState = immutable.set(prevState, action.immutablePath, action.value)
 
     if (store.onStateChange) {
       const returnedStateChange = store.onStateChange(prevState, action, newState)

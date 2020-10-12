@@ -1,13 +1,15 @@
 import React from 'react'
 import { getReduxState } from './getReduxState'
-import { PathStoreMap } from '../index'
+import { ActionPayload, PathStoreAction, PathStoreMap } from '../types'
 
-export function setReduxState<T>(pathStoreMap: PathStoreMap<T>, action: React.SetStateAction<T>): React.Dispatch<React.SetStateAction<T>> {
+export function setReduxState<T>(pathStoreMap: PathStoreMap<T>, action: React.SetStateAction<T>): PathStoreAction<T> {
   if (typeof action === 'function') action = (action as Function)(getReduxState(pathStoreMap))
+
+  const payload = action as any as ActionPayload<T>
 
   return pathStoreMap.store.dispatch({
     type: pathStoreMap.actionName,
-    key: pathStoreMap.path,
-    value: action,
-  } as any)
+    immutablePath: pathStoreMap.path,
+    value: payload,
+  } as PathStoreAction<T>)
 }

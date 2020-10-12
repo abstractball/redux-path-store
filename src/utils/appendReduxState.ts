@@ -1,5 +1,6 @@
-import { PathStoreMap, setReduxState } from '../index'
+import { setReduxState } from '../index'
+import { PathStoreMap } from '../types'
 
-export function appendReduxState<T>(pathMap: PathStoreMap<T>, value: any) {
-  return setReduxState(pathMap, (curValue: any) => ({ ...curValue, ...value }))
+export function appendReduxState<T>(pathMap: PathStoreMap<T>, value: Partial<T>) {
+  return setReduxState(pathMap, (curValue: T) => ({ ...curValue, ...value }))
 }
