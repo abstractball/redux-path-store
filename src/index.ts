@@ -4,16 +4,18 @@ import { getReduxState } from './utils/getReduxState'
 import { resetReduxState } from './utils/resetReduxState'
 import { appendReduxState } from './utils/appendReduxState'
 import { createStoreFromState } from './utils/createStoreFromState'
-import { useOptionalReduxState } from './hooks/useOptionalReduxState'
+import { useWithinState } from './hooks/useWithinState'
+import PathStoreProvider from './components/PathStoreProvider'
 
 export * from './types'
 
 export {
   createStoreFromState,
-  useOptionalReduxState,
   resetReduxState,
   appendReduxState,
   useReduxState,
+  useWithinState,
   getReduxState,
   setReduxState,
+  PathStoreProvider,
 }

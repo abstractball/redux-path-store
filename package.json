@@ -1,13 +1,14 @@
 {
   "name": "redux-path-store",
-  "version": "1.1.17",
+  "version": "1.2.0",
   "description": "Simplified redux store management leveraging the power of pathing objects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf ./dist && tsc -p tsconfig.json",
     "test": "jest",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "watch": "tsc -w -p tsconfig.json"
   },
   "author": "abstractball",
   "license": "ISC",
@@ -15,7 +16,8 @@
     "@reduxjs/toolkit": "^1.4.0",
     "dashify": "^2.0.0",
     "object-path-immutable": "^4.1.0",
-    "react-redux": "^7.2.1"
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5"
   },
   "jest": {
     "transform": {
@@ -36,9 +38,7 @@
     "README.md"
   ],
   "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-redux": ">=7.2.0",
-    "redux": ">=4.0.0"
+    "react": ">=16.0.0"
   },
   "devDependencies": {
     "@types/dashify": "^1.0.0",
@@ -56,5 +56,70 @@
     "jest": "^26.5.2",
     "ts-jest": "^26.4.1",
     "typescript": "^4.0.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": [
+      "plugin:react/recommended",
+      "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react",
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "consistent-return": "off",
+      "max-len": [
+        "error",
+        {
+          "code": 200
+        }
+      ],
+      "@typescript-eslint/no-unused-expressions": "off",
+      "promise/always-return": "off",
+      "import/extensions": "off",
+      "no-param-reassign": "off",
+      "@typescript-eslint/naming-convention": "off",
+      "no-shadow": "off",
+      "import/no-cycle": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "curly": [
+        "error",
+        "multi-or-nest"
+      ],
+      "no-unused-vars": "off",
+      "react/prop-types": "off",
+      "arrow-body-style": [
+        "error",
+        "as-needed"
+      ],
+      "object-curly-newline": "off",
+      "@typescript-eslint/semi": "off",
+      "semi": "off",
+      "no-use-before-define": "off",
+      "import/no-unresolved": "off",
+      "import/prefer-default-export": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-use-before-define": "off",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ]
+    }
   }
 }

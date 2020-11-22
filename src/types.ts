@@ -10,8 +10,15 @@ export interface ActionMap<T> {
   [key: string]: StateReducer<T>
 }
 
-export type UseReduxState<T> = [T, (action: React.SetStateAction<T>) => PathStoreAction<T>, () => PathStoreAction<T>]
-export type UseOptionalReduxState<T> = [T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>] | UseReduxState<T>
+export type UseReduxStateOptions<T> = {
+  find?: FindWithinState<T>
+  localState?: [T, React.Dispatch<React.SetStateAction<T>>]
+}
+
+export type UseReduxSetReturn<T> = React.Dispatch<React.SetStateAction<T>> | PathStoreAction<T>
+
+export type UseWithinState<T> = [T[keyof T], (action: React.SetStateAction<T>) => UseReduxSetReturn<T>, () => UseReduxSetReturn<T>]
+export type UseReduxState<T> = [T, (action: React.SetStateAction<T>) => UseReduxSetReturn<T>, () => UseReduxSetReturn<T>]
 export type OnStateChange<T> = ((state: T, action: PathStoreAction<T>, newState: T) => any) | undefined
 export type StateReducer<T> = (state: T, action: PathStoreAction<T>) => T
 export type ValueOf<T> = T[keyof T];
@@ -21,6 +28,8 @@ export type PathStoreAction<T> = {
   immutablePath: string
   value: ActionPayload<T>
 }
+
+export type FindWithinState<T> = (value: T) => T[keyof T]
 
 export type ActionPayload<T> = {
   key: string
