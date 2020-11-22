@@ -1,6 +1,6 @@
 {
   "name": "redux-path-store",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Simplified redux store management leveraging the power of pathing objects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,7 +32,6 @@
     "url": "https://github.com/abstractball/redux-path-store"
   },
   "files": [
-    "src",
     "dist",
     "LICENSE",
     "README.md"
