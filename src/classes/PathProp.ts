@@ -1,5 +1,3 @@
-import { EnhancedStore } from '@reduxjs/toolkit'
-import StoreGenerator from './StoreGenerator'
 import { camelToSnake } from '../utils/camelToSnake'
 import { PathPropMap, PathStoreMap, ValueOf } from '../types'
 
@@ -9,10 +7,6 @@ class PathProp<T> {
   name: string
 
   properties?: PathProp<ValueOf<T>>[]
-
-  store: EnhancedStore | undefined
-
-  generator: StoreGenerator<any> | undefined
 
   context?: React.Context<any>
 
@@ -40,7 +34,6 @@ class PathProp<T> {
   getMapValue(): PathPropMap<T> {
     return {
       path: this.path,
-      store: this.store,
       context: this.context,
       reduxPath: this.reduxPath,
       actionName: this.getReduxActionName(),
@@ -65,7 +58,6 @@ class PathProp<T> {
   // Leverage typescript auto parsing value types.
   createProperty<T>(path: string, name: string, value: T) {
     const subProperty = new PathProp<T>(path, name, value)
-    subProperty.generator = this.generator
     subProperty.context = this.context
     subProperty.reduxPath = this.reduxPath
 

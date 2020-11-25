@@ -1,7 +1,7 @@
 import { SetStateAction } from 'react'
-import { FindWithinState, UseReduxState, UseWithinState } from '../types'
+import { FindWithinState, UseContextState, UseWithinState } from '../types'
 
-export function useWithinState<T, U>([value, setValue, resetValue]: UseReduxState<T>, find: FindWithinState<T, U>): UseWithinState<T, U> {
+export function useWithinState<T, U>([value, setValue, resetValue]: UseContextState<T>, find: FindWithinState<T, U>): UseWithinState<T, U> {
   if (!Array.isArray(value)) throw new Error('useWithinState can only be used with arrays.')
 
   const withinValue = find(value)

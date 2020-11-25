@@ -1,15 +1,29 @@
-import { Store } from 'redux'
-import React, { PropsWithChildren } from 'react'
-import { Provider } from 'react-redux'
+import React, { PropsWithChildren, useEffect, useState } from 'react'
+import { PathContext } from '../types'
+import { devToolsStore } from '../utils/withDevTools'
+import { camelToSnake } from '../utils/camelToSnake'
 
 interface Props extends PropsWithChildren<any> {
-  store: Store
+  contextPath: PathContext<any>
 }
 
-export default function PathStoreProvider({ store, children }: Props) {
+export default function PathStoreProvider({ contextPath, children }: Props) {
+  const [state, setState] = useState(contextPath.initialState)
+  const Context = contextPath.context
+
+  useEffect(() => {
+    devToolsStore && devToolsStore.dispatch({
+      [contextPath.reduxPath]: { ...contextPath.initialState },
+    }, `${camelToSnake(contextPath.reduxPath).toUpperCase()}_INIT`)
+  }, [])
+
   return (
-    <Provider store={store}>
+    <Context.Provider value={{
+      ...state,
+      setContext: setState,
+    }}
+    >
       {children}
-    </Provider>
+    </Context.Provider>
   )
 }
