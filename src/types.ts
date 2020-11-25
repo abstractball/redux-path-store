@@ -7,6 +7,10 @@ export interface PathContext<T> {
   reduxPath: string
 }
 
+export type ContextStateWithSet<T> = React.Context<T> & {
+  setContext: (callback: ((newContext: T) => T)) => any
+}
+
 export type UseContextSetReturn<T> = React.Dispatch<React.SetStateAction<T>> | PathStoreAction<T>
 
 export type UseWithinState<T, U> = [U, (action: React.SetStateAction<U>) => UseContextSetReturn<T>, () => UseContextSetReturn<T>]

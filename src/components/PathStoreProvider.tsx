@@ -7,7 +7,7 @@ interface Props extends PropsWithChildren<any> {
   contextPath: PathContext<any>
 }
 
-export default function PathStoreProvider({ contextPath, children }: Props) {
+export function PathStoreProvider({ contextPath, children }: Props) {
   const [state, setState] = useState(contextPath.initialState)
   const Context = contextPath.context
 
