@@ -1,29 +1,34 @@
 import { EnhancedStore } from '@reduxjs/toolkit'
 import StoreGenerator from './StoreGenerator'
 import { camelToSnake } from '../utils/camelToSnake'
-import { PathStoreMap, ValueOf } from '../types'
+import { PathPropMap, PathStoreMap, ValueOf } from '../types'
 
-class Property<T> {
+class PathProp<T> {
   path: string
 
   name: string
 
-  properties: Property<ValueOf<T>>[]
+  properties?: PathProp<ValueOf<T>>[]
 
   store: EnhancedStore | undefined
 
   generator: StoreGenerator<any> | undefined
 
+  context?: React.Context<any>
+
+  reduxPath: string = ''
+
   value: T
 
-  map: PathStoreMap<T>
+  map?: PathStoreMap<T>
 
-  constructor(generator: StoreGenerator<any> | undefined, path: string, name: string, value: T) {
-    this.generator = generator
-    this.store = generator ? generator.store : undefined
+  constructor(path: string, name: string, value: T) {
     this.path = path
     this.name = name
     this.value = value
+  }
+
+  load() {
     this.properties = this.getProperties()
     this.map = this.getMap()
   }
@@ -32,16 +37,22 @@ class Property<T> {
     return this.value !== undefined && this.value !== null && typeof this.value === 'object'
   }
 
-  getMapValue(): { path: string, store: EnhancedStore | undefined, defaultValue: any, actionName: string } {
+  getMapValue(): PathPropMap<T> {
     return {
       path: this.path,
       store: this.store,
+      context: this.context,
+      reduxPath: this.reduxPath,
       actionName: this.getReduxActionName(),
       defaultValue: this.value,
     }
   }
 
   getMap(): PathStoreMap<T> {
+    if (!this.properties) {
+      throw new Error('Not loaded')
+    }
+
     const map: any = { ...(this.getMapValue()) }
 
     this.properties.forEach((property) => {
@@ -53,10 +64,16 @@ class Property<T> {
 
   // Leverage typescript auto parsing value types.
   createProperty<T>(path: string, name: string, value: T) {
-    return new Property<T>(this.generator as any, path, name, value)
+    const subProperty = new PathProp<T>(path, name, value)
+    subProperty.generator = this.generator
+    subProperty.context = this.context
+    subProperty.reduxPath = this.reduxPath
+
+    subProperty.load()
+    return subProperty
   }
 
-  getProperties(): Property<ValueOf<T>>[] {
+  getProperties(): PathProp<ValueOf<T>>[] {
     if (!this.isObject() || Array.isArray(this.value)) return []
 
     return Object.keys(this.value).map((key) => {
@@ -70,8 +87,8 @@ class Property<T> {
   }
 
   getReduxActionName(): string {
-    return camelToSnake(this.path).toUpperCase()
+    return camelToSnake(`${this.reduxPath}_${this.path}`).toUpperCase()
   }
 }
 
-export default Property
+export default PathProp

@@ -6,6 +6,11 @@ import { appendReduxState } from './utils/appendReduxState'
 import { createStoreFromState } from './utils/createStoreFromState'
 import { useWithinState } from './hooks/useWithinState'
 import PathStoreProvider from './components/PathStoreProvider'
+import { useLocalOrReduxState } from './hooks/useLocalOrReduxState'
+import { pathify } from './utils/pathify'
+import { useContextState } from './hooks/useContextState'
+import ContextProvider from './components/ContextProvider'
+import { createPathContext } from './utils/createPathContext'
 
 export * from './types'
 
@@ -14,6 +19,11 @@ export {
   resetReduxState,
   appendReduxState,
   useReduxState,
+  useContextState,
+  ContextProvider,
+  pathify,
+  createPathContext,
+  useLocalOrReduxState,
   useWithinState,
   getReduxState,
   setReduxState,

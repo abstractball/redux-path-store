@@ -7,6 +7,10 @@ export function setReduxState<T>(pathStoreMap: PathStoreMap<T>, action: React.Se
 
   const payload = action as any as ActionPayload<T>
 
+  if (!pathStoreMap.store || !('dispatch' in pathStoreMap.store)) {
+    throw new Error('Missing store')
+  }
+
   return pathStoreMap.store.dispatch({
     type: pathStoreMap.actionName,
     immutablePath: pathStoreMap.path,

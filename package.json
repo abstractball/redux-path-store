@@ -1,6 +1,6 @@
 {
   "name": "redux-path-store",
-  "version": "1.2.1",
+  "version": "1.2.5",
   "description": "Simplified redux store management leveraging the power of pathing objects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,6 +48,9 @@
     "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^7.10.0",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.21.3",
@@ -57,26 +60,13 @@
     "typescript": "^4.0.3"
   },
   "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
     "extends": [
-      "plugin:react/recommended",
-      "airbnb"
+      "react-app",
+      "airbnb-typescript"
     ],
-    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 12,
-      "sourceType": "module"
+      "project": "./tsconfig.json"
     },
-    "plugins": [
-      "react",
-      "@typescript-eslint"
-    ],
     "rules": {
       "consistent-return": "off",
       "max-len": [
@@ -86,39 +76,26 @@
         }
       ],
       "@typescript-eslint/no-unused-expressions": "off",
+      "import/no-named-as-default": "off",
+      "no-undef": "off",
+      "@typescript-eslint/no-shadow": "off",
       "promise/always-return": "off",
-      "import/extensions": "off",
       "no-param-reassign": "off",
+      "import/prefer-default-export": "off",
       "@typescript-eslint/naming-convention": "off",
       "no-shadow": "off",
+      "react/require-default-props": "off",
+      "react/react-in-jsx-scope": "off",
       "import/no-cycle": "off",
       "react/jsx-one-expression-per-line": "off",
       "jsx-a11y/click-events-have-key-events": "off",
-      "curly": [
-        "error",
-        "multi-or-nest"
-      ],
-      "no-unused-vars": "off",
       "react/prop-types": "off",
-      "arrow-body-style": [
-        "error",
-        "as-needed"
-      ],
+      "arrow-body-style": "off",
       "object-curly-newline": "off",
       "@typescript-eslint/semi": "off",
-      "semi": "off",
-      "no-use-before-define": "off",
-      "import/no-unresolved": "off",
-      "import/prefer-default-export": "off",
       "react/jsx-props-no-spreading": "off",
       "react/no-unescaped-entities": "off",
-      "@typescript-eslint/no-use-before-define": "off",
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": true
-        }
-      ]
+      "@typescript-eslint/no-use-before-define": "off"
     }
   }
 }
